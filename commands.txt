@@ -1,14 +1,4 @@
-Create an database which has name as student
-
-Construct 4 tables.
-
-Table1-registration: Having attributes studentname, parentsname, dob, emailid, registernumber, department_name, mobilenumber, gender, address, pincode.
-
-Table2-stafflogin: Having attributes loginig, loginppass
-
-Table3-attendance: Having attributes as registernumber, absentdate
-
-Table4- mark: Having attributes registernumber, assessment, sub1, sub2, sub3, sub4, sub5, sub6.
-
+I didn't complete dynamic table creation 
+Process is going on...
 
 And this website completely maintains session also...

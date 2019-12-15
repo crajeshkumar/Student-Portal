@@ -15,6 +15,6 @@
         header("location:./profile.php");
     }
     else{
-        echo '<script> window.location.href="http://localhost/rajesh/login.php"; alert("Invalid datails!!! Check and Try again");</script>';
+        echo '<script> window.location.href="login.html"; alert("Invalid datails!!! Check and Try again");</script>';
     }
 ?>

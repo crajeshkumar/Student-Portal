@@ -2,7 +2,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['loginid'])) {
-        echo '<script> window.location.href="http://localhost/rajesh/stafflogin.php"; alert("You have to login first");</script>';
+        echo '<script> window.location.href="stafflogin.html"; alert("You have to login first");</script>';
     }
     require 'config.php';
  ?>
@@ -10,8 +10,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles.css">
 <style>
-body {font-family: Arial;}
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
@@ -82,6 +82,7 @@ input[type=date]{
   border-top: none;
 }
 body{
+  font-family: Arial;
 	width: 80%;
 	margin: 10%;
 	margin-top: 100px;

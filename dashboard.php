@@ -1,16 +1,13 @@
-
 <?php
     session_start();
     if(!isset($_SESSION['login_regno'])) {
-    echo '<script> window.location.href="http://localhost/rajesh/login.php"; alert("You have to login first to see your details");</script>';
+    echo '<script> window.location.href="login.html"; alert("You have to login first to see your details");</script>';
     }
     require 'config.php';
     $regno = $_SESSION['login_regno'];
     $id = $_SESSION['id'];
     $name = $_SESSION['name'];
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,30 +62,30 @@
                         <option value="Assessment4" name="Assessment">Assessment 4</option>
                       </select>
                       <br>
-                    <input type="Submit" value="Submit" name="Submit" onclick="document.getElementById('findexam').style.display='none';" style="margin-left: 45%";>
+                    <input type="Submit" value="Submit" name="Submit" style="margin-left: 45%";>
                     </div>
                 </form> 
                 <?php
                 
                 function grade($m){
                     if($m>90)
-                        return "A";
+                        return "Grade A";
                     else if($m>80)
-                        return "B";
+                        return "Grade B";
                     else if($m>70)
-                        return "C";
+                        return "Grade C";
                     else if($m>60)
-                        return "D";
+                        return "Grade D";
                     else if($m>50)
-                        return "B";
+                        return "Grade E";
                     else
-                        return "F";
+                        return "Grade F";
                 }
                 function passOrFail($m){
                     if($m>=50)
-                        return "P";
+                        return "Pass";
                     else
-                        return "F";
+                        return "Fail";
                 }
                     if(isset($_POST['Submit']))
                     {
@@ -146,6 +143,7 @@
                         else{
                             echo"NO RECORDS FOUND";
                         }
+                        echo '<script>document.getElementById("findexam").style.display="none";</script>';
                 }
             ?>
         </div>

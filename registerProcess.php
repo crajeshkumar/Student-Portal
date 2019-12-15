@@ -15,6 +15,6 @@
         $department_name=$_POST['department_name'];
         $status=1;
         $student_record=mysqli_query($conn,"INSERT INTO  registration(studentname,parentsname,dob,emailid,registernumber,department_name,mobilenumber,gender,address,pincode) values('".$studentname."','".$parentsname."','".$dateofbirth."','".$emailid."','".$registernumber."','".$department_name."','".$mobilenumber."','".$gender."','".$address."','".$pincode."')");
-        header("location:./login.php");
+        header("location:./login.html");
     }
 ?>

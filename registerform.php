@@ -123,7 +123,7 @@ Female <input type="radio" name="Gender" value="Female" />
 
 
 <tr>
-<td><a href="login.php" style="text-decoration:none; color:#fff;">Already user? Log In</a></td>
+<td><a href="login.html" style="text-decoration:none; color:#fff;">Already user? Log In</a></td>
 </td>
 </tr>
 

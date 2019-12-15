@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_GET["session_expired"])) {
-header("location:./login.php");
+header("location:./login.html");
 }
 	session_start();
 	require 'config.php';
@@ -15,6 +15,5 @@ header("location:./login.php");
 	$sub5=$_POST["sub5"];
 	$sub6=$_POST["sub6"];
 	$result=mysqli_query($conn,"INSERT INTO  mark(registernumber,semester,assessment,sub1,sub2,sub3,sub4,sub5,sub6) values('".$registernumber."','".$semester."','".$assessment."','".$sub1."','".$sub2."','".$sub3."','".$sub4."','".$sub5."','".$sub6."')");
-	echo '<script>alert("Hello World")</script>';
 	header("location:./insertmark.php");
 ?>

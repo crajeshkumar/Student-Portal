@@ -1,9 +1,7 @@
-
-<?php
-    
+<?php    
     session_start();
     if(!isset($_SESSION['login_regno'])) {
-        echo '<script> window.location.href="http://localhost/rajesh/login.php"; alert("You have to login first to see your details");</script>';
+        echo '<script> window.location.href="login.html"; alert("You have to login first to see your details");</script>';
     }
     require 'config.php';
     $regno = $_SESSION['login_regno'];
@@ -20,7 +18,6 @@
     <title>Profile</title>
     <link rel="stylesheet" href="./css/main.css">
     <style type="text/css">
-/* Full-width input fields */
 input[type=text], input[type=date], input[type=textarea] {
   width: 100%;
   padding: 12px 20px;
@@ -28,114 +25,6 @@ input[type=text], input[type=date], input[type=textarea] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}
-  .profileDetails{
-    position: relative;
-    margin-top: 10px;
-    left:30%;
-    width:780px;
-    height: auto;
-    top:15px;
-    /* border: 2px red solid; */
-    border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-.editBtn{
-    margin-top: 2px;
-    margin-left: 30px;
-    cursor: pointer;
-    display: block;
-}
-.edit{
-     padding: 10px 20px;
-     background: #34a326;
-     font-size: 17px;
-}
-/* Set a style for all buttons */
-.button1{
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-
-}
-
-.button1:hover {
-  opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancel {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-.editImage {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-    width: 70%;
-  padding-top: 100px;
-  padding-left : 23%;
-  display: none;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 77%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
 }
    </style>
 </head>
@@ -146,6 +35,7 @@ input[type=text], input[type=date], input[type=textarea] {
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($result);
         ?>
+        <div class="pagecontainer">
         <div class="profileHeading">
                 <h2>Student Details</h2>
         </div>
@@ -163,7 +53,7 @@ input[type=text], input[type=date], input[type=textarea] {
                         <tr>
                             <td>DATE OF BIRTH</td>
                             
-                            <td><?php echo $row['dob']; ?></td>
+                            <td><?php echo date_format(date_create($row['dob']),'d-F-Y') ?></td>
                         </tr>
                         <tr>
                             <td>EMAIL ID</td>
@@ -179,7 +69,7 @@ input[type=text], input[type=date], input[type=textarea] {
                         </tr>
                         <tr>
                         <td>MOBILE NUMBER</td>
-                        <td><?php echo $row['mobilenumber']; ?>(10 digit number)
+                        <td><?php echo $row['mobilenumber']; ?>
                         </td>
                         </tr>
                         <?php
@@ -195,7 +85,7 @@ input[type=text], input[type=date], input[type=textarea] {
                         else{
                             echo'<td>
                                     Male <input type="radio" name="Gender" value="Male" >
-                                    Female <input type="radio" name="Gender" value="Female" checked>
+                                    Female <input type="radio" name="Gender" value="Female">
                                 </td>
                             </tr>';
                         }
@@ -232,7 +122,7 @@ input[type=text], input[type=date], input[type=textarea] {
                 <!----- PARENTS NAME ---------------------------------------------------------->
                 <tr>
                 <td>PARENTS NAME</td>
-                <td><input type="text" name="parentsname" maxlength="30"/>
+                <td><input type="text" name="parentsname" maxlength="30" required/>
                 (max 30 characters a-z and A-Z)
                 </td>
                 </tr>
@@ -241,26 +131,26 @@ input[type=text], input[type=date], input[type=textarea] {
                 <tr>
                 <td>DATE OF BIRTH</td>
                  
-                <td><input type="date" name="dob"></td>
+                <td><input type="date" name="dob" required></td>
                 </tr>
                  
                 <!----- Email Id ---------------------------------------------------------->
                 <tr>
                 <td>EMAIL ID</td>
-                <td><input type="text" name="Email_Id" maxlength="100" /></td>
+                <td><input type="text" name="Email_Id" maxlength="100" required/></td>
                 </tr>
                 <!---------- Department Name---------------------------------------------------->
                 <tr>
                 <td>Department Name </td>
                 <td>
-                <input type="text" name ="department_name"/>
+                <input type="text" name ="department_name" required/>
                 </td>
                 </tr>
                 <!----- Mobile Number ---------------------------------------------------------->
                 <tr>
                 <td>MOBILE NUMBER</td>
                 <td>
-                <input type="text" name="mobile_number" maxlength="10" />
+                <input type="text" name="mobile_number" maxlength="10" required/>
                 (10 digit number)
                 </td>
                 </tr>
@@ -269,21 +159,21 @@ input[type=text], input[type=date], input[type=textarea] {
                 <tr>
                 <td>GENDER</td>
                 <td>
-                Male <input type="radio" name="Gender" value="Male" />
-                Female <input type="radio" name="Gender" value="Female" />
+                Male <input type="radio" name="Gender" value="Male" required/>
+                Female <input type="radio" name="Gender" value="Female" required/>
                 </td>
                 </tr>
                  
                 <!----- Address ---------------------------------------------------------->
                 <tr>
                 <td>ADDRESS <br /><br /><br /></td>
-                <td><textarea name="Address" rows="4" cols="30"></textarea></td>
+                <td><textarea name="Address" rows="4" cols="30" required></textarea></td>
                 </tr>
                  
                 <!----- Pin Code ---------------------------------------------------------->
                 <tr>
                 <td>PIN CODE</td>
-                <td><input type="text" name="pincode" maxlength="6" />
+                <td><input type="text" name="pincode" maxlength="6" required/>
                 (6 digit number)
                 </td>
                 </tr>
@@ -325,11 +215,11 @@ var modal = document.getElementById('toEdit');
 
             $sql = "UPDATE registration SET studentname='$studentname',parentsname='$parentsname',dob='$dob',emailid='$emailid',registernumber='$regno',department_name='$department_name',mobilenumber='$mobileno',gender='$gender',address='$address',pincode='$pincode' WHERE registernumber='$regno'";
             $result=mysqli_query($conn,$sql);
-            
+
             echo '<div class="successMsg"><h2>Details Have been changed successfully</h2>';
             echo "<meta http-equiv='refresh' content='0'>";
         }
     ?>
-
+</div>
 </body>
 </html>

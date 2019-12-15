@@ -4,6 +4,6 @@
    unset($_SESSION['loginid']);
    unset($_SESSION['pass']);
    session_destroy();
-   header("location:./stafflogin.php");
+   header("location:./stafflogin.html");
    
 ?>
